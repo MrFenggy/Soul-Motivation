@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soul Motivation - Elevate Your Spirit, Transform Your Life</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/interactions.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#A8D5BA',
+            secondary: '#D8BFD8',
+            accent: '#FFB347',
+            background: '#F7F7F2',
+            textDark: '#333333',
+            textMedium: '#666666',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .transition-all {
+        transition: all 0.3s ease;
+      }
+    }
+  </style>
+</head>
+<body class="font-sans bg-background text-textDark page-transition" data-page="home">
+  <!-- Header Section -->
+  <header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center">
+        <a href="index.html" class="text-2xl font-bold text-primary">Soul Motivation</a>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-8">
+        <a href="index.html" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="home">
+          Home
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="#features" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="features">
+          Features
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="#how-it-works" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="how-it-works">
+          How It Works
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="#testimonials" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="testimonials">
+          Testimonials
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="#pricing" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="pricing">
+          Pricing
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="#faq" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="faq">
+          FAQ
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+      </nav>
+      
+      <div class="hidden md:flex items-center space-x-4">
+        <button class="px-4 py-2 text-primary border border-primary rounded-lg hover:bg-primary hover:text-white transition-all btn-hover-effect">
+          Sign In
+        </button>
+        <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all btn-hover-effect">
+          Get Started
+        </button>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-textDark" id="mobile-menu-button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <div class="md:hidden hidden bg-white opacity-0 transition-all duration-300" id="mobile-menu">
+      <div class="px-4 py-4 space-y-4">
+        <a href="index.html" class="block font-medium hover:text-primary">Home</a>
+        <a href="#features" class="block font-medium hover:text-primary">Features</a>
+        <a href="#how-it-works" class="block font-medium hover:text-primary">How It Works</a>
+        <a href="#testimonials" class="block font-medium hover:text-primary">Testimonials</a>
+        <a href="#pricing" class="block font-medium hover:text-primary">Pricing</a>
+        <a href="#faq" class="block font-medium hover:text-primary">FAQ</a>
+        <div class="pt-4 flex flex-col space-y-2">
+          <button class="px-4 py-2 text-primary border border-primary rounded-lg hover:bg-primary hover:text-white transition-all">
+            Sign In
+          </button>
+          <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 px-4 bg-gradient-to-b from-white to-background">
+    <div class="container mx-auto max-w-6xl">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-10 md:mb-0">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight text-shadow">
+            Elevate Your Spirit, Transform Your Life
+          </h1>
+          <p class="text-lg text-textMedium mb-8 max-w-lg">
+            Daily inspiration and personal growth tools to guide your journey toward a more positive and motivated mindset.
+          </p>
+          <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+            <button class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all font-medium btn-hover-effect">
+              Get Started
+            </button>
+            <a href="#features" class="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-all font-medium btn-hover-effect">
+              Explore Features
+            </a>
+          </div>
+        </div>
+        <div class="md:w-1/2">
+          <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+               alt="Person feeling motivated" 
+               class="rounded-2xl shadow-xl w-full object-cover h-96 md:h-auto">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 px-4 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold mb-4">Powerful Features to Inspire Growth</h2>
+        <p class="text-textMedium max-w-2xl mx-auto">
+          Discover tools designed to elevate your mood and transform your mindset, helping you navigate life's challenges with confidence.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Feature 1: AI Motivation Generator -->
+        <div class="bg-background rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all card-hover">
+          <div class="h-16 w-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-4">AI Motivation Generator</h3>
+          <p class="text-textMedium mb-6">
+            Transform thoughts into visual inspiration with our AI-powered motivation generator. Create beautiful, shareable images that inspire and motivate.
+          </p>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Generate random inspirational images</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Upload your own photos for personalization</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Choose from multiple design styles</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Share directly to social media</span>
+            </li>
+          </ul>
+          <a href="ai-motivation-generator.html" class="text-primary font-medium flex items-center hover:underline btn-hover-effect">
+            Try Generator
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+        <!-- Feature 2: Mood Journal -->
+        <div class="bg-background rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all card-hover">
+          <div class="h-16 w-16 bg-secondary/20 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Mood Journal</h3>
+          <p class="text-textMedium mb-6">
+            Track your emotional journey and reflect on your growth. Our private journaling tool helps you understand patterns and celebrate progress.
+          </p>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Daily mood tracking and journaling</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Secure and private entries</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Mood pattern analysis and insights</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Customizable journal templates</span>
+            </li>
+          </ul>
+          <a href="mood-journal.html" class="text-secondary font-medium flex items-center hover:underline btn-hover-effect">
+            Start Journaling
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Feature 3: Daily Affirmations -->
+        <div class="bg-background rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all card-hover">
+          <div class="h-16 w-16 bg-accent/20 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Daily Affirmations</h3>
+          <p class="text-textMedium mb-6">
+            Start each day with positive energy. Receive personalized affirmations that resonate with your goals and current emotional state.
+          </p>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Personalized daily affirmations</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Scheduled reminders and notifications</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Voice-guided affirmation sessions</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Create and save custom affirmations</span>
+            </li>
+          </ul>
+          <a href="daily-affirmations.html" class="text-accent font-medium flex items-center hover:underline btn-hover-effect">
+            Try Affirmations
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+        
+        <!-- Feature 4: Mindfulness Meditation -->
+        <div class="bg-background rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all card-hover">
+          <div class="h-16 w-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Mindfulness Meditation</h3>
+          <p class="text-textMedium mb-6">
+            Find your center with guided meditation sessions designed for all experience levels. Reduce stress and increase focus in just minutes a day.
+          </p>
+          <ul class="space-y-3 mb-6">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Guided meditation sessions (5-30 min)</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Ambient soundscapes and music</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Breathing exercises and techniques</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Progress tracking and streaks</span>
+            </li>
+          </ul>
+          <a href="mindfulness-meditation.html" class="text-primary font-medium flex items-center hover:underline btn-hover-effect">
+            Start Meditating
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="py-20 px-4 bg-background">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold mb-4">How Soul Motivation Works</h2>
+        <p class="text-textMedium max-w-2xl mx-auto">
+          Our simple process helps you build a sustainable practice of positivity and personal growth.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="h-20 w-20 bg-primary/20 rounded-full flex items-center justify-center mb-6 relative">
+            <span class="text-2xl font-bold text-primary">1</span>
+            <div class="absolute -right-8 top-1/2 h-0.5 w-8 bg-primary/30 hidden md:block"></div>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Create Your Profile</h3>
+          <p class="text-textMedium">
+            Sign up and tell us about your goals, challenges, and what motivates you. We'll customize your experience based on your needs.
+          </p>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="h-20 w-20 bg-secondary/20 rounded-full flex items-center justify-center mb-6 relative">
+            <span class="text-2xl font-bold text-secondary">2</span>
+            <div class="absolute -right-8 top-1/2 h-0.5 w-8 bg-secondary/30 hidden md:block"></div>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Explore Tools & Resources</h3>
+          <p class="text-textMedium">
+            Discover our suite of motivation tools - from AI-generated inspiration to guided meditations and mood tracking.
+          </p>
+        </div>
+        
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="h-20 w-20 bg-accent/20 rounded-full flex items-center justify-center mb-6">
+            <span class="text-2xl font-bold text-accent">3</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Build Your Daily Practice</h3>
+          <p class="text-textMedium">
+            Integrate Soul Motivation into your routine with daily check-ins, affirmations, and mindfulness exercises that fit your schedule.
+          </p>
+        </div>
+      </div>
+      
+      <div class="mt-16 text-center">
+        <a href="#pricing" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all font-medium inline-block btn-hover-effect">
+          Start Your Journey
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-20 px-4 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold mb-4">What Our Users Say</h2>
+        <p class="text-textMedium max-w-2xl mx-auto">
+          Discover how Soul Motivation has helped people transform their mindset and achieve their goals.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="bg-background p-8 rounded-2xl shadow-lg">
+          <div class="flex items-center mb-4">
+            <div class="text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+            </div>
+          </div>
+          <p class="text-textMedium mb-6 italic">
+            "Soul Motivation has completely transformed my morning routine. The daily affirmations and meditation sessions have helped me start each day with intention and positivity."
+          </p>
+          <div class="flex items-center">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                 alt="Sarah J." 
+                 class="h-12 w-12 rounded-full object-cover mr-4">
+            <div>
+              <h4 class="font-bold">Sarah J.</h4>
+              <p class="text-sm text-textMedium">Marketing Executive</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="bg-background p-8 rounded-2xl shadow-lg">
+          <div class="flex items-center mb-4">
+            <div class="text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+            </div>
+          </div>
+          <p class="text-textMedium mb-6 italic">
+            "The mood journal feature has been eye-opening. Being able to track my emotional patterns has helped me identify triggers and make positive changes in my life."
+          </p>
+          <div class="flex items-center">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                 alt="Michael T." 
+                 class="h-12 w-12 rounded-full object-cover mr-4">
+            <div>
+              <h4 class="font-bold">Michael T.</h4>
+              <p class="text-sm text-textMedium">Software Engineer</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="bg-background p-8 rounded-2xl shadow-lg">
+          <div class="flex items-center mb-4">
+            <div class="text-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+            </div>
+          </div>
+          <p class="text-textMedium mb-6 italic">
+            "As a teacher, I use the AI Motivation Generator to create inspiring images for my classroom. My students love them, and it's helped create a more positive learning environment."
+          </p>
+          <div class="flex items-center">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                 alt="Elena R." 
+                 class="h-12 w-12 rounded-full object-cover mr-4">
+            <div>
+              <h4 class="font-bold">Elena R.</h4>
+              <p class="text-sm text-textMedium">High School Teacher</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-20 px-4 bg-background">
+    <div class="container mx-auto max-w-6xl">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold mb-4">Simple, Transparent Pricing</h2>
+        <p class="text-textMedium max-w-2xl mx-auto">
+          Choose the plan that fits your needs and start your journey to a more motivated, positive mindset.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Free Plan -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all">
+          <h3 class="text-xl font-bold mb-2">Basic</h3>
+          <p class="text-textMedium mb-6">Perfect for getting started</p>
+          <div class="mb-6">
+            <span class="text-4xl font-bold">$0</span>
+            <span class="text-textMedium">/month</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Daily affirmation (1 per day)</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Basic mood tracking</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>3 meditation sessions</span>
+            </li>
+            <li class="flex items-start text-textMedium">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-textMedium mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span>AI Motivation Generator (limited)</span>
+            </li>
+            <li class="flex items-start text-textMedium">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-textMedium mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span>Advanced analytics</span>
+            </li>
+          </ul>
+          <button class="w-full px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-all font-medium btn-hover-effect">
+            Get Started
+          </button>
+        </div>
+        
+        <!-- Premium Plan -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all relative transform scale-105">
+          <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-accent text-white px-4 py-1 rounded-full text-sm font-medium">
+            Most Popular
+          </div>
+          <h3 class="text-xl font-bold mb-2">Premium</h3>
+          <p class="text-textMedium mb-6">For dedicated personal growth</p>
+          <div class="mb-6">
+            <span class="text-4xl font-bold">$9.99</span>
+            <span class="text-textMedium">/month</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Unlimited daily affirmations</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Advanced mood tracking & insights</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Full meditation library</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>AI Motivation Generator (50/month)</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Basic analytics</span>
+            </li>
+          </ul>
+          <button class="w-full px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all font-medium btn-hover-effect">
+            Get Premium
+          </button>
+        </div>
+        
+        <!-- Pro Plan -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all">
+          <h3 class="text-xl font-bold mb-2">Professional</h3>
+          <p class="text-textMedium mb-6">For coaches and therapists</p>
+          <div class="mb-6">
+            <span class="text-4xl font-bold">$24.99</span>
+            <span class="text-textMedium">/month</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>All Premium features</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Client management tools</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Unlimited AI Motivation Generator</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Advanced analytics & reporting</span>
+            </li>
+            <li class="flex items-start">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>White-label options</span>
+            </li>
+          </ul>
+          <button class="w-full px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-all font-medium btn-hover-effect">
+            Get Professional
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-20 px-4 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+        <p class="text-textMedium max-w-2xl mx-auto">
+          Find answers to common questions about Soul Motivation and how it can help you.
+        </p>
+      </div>
+      
+      <div class="space-y-6">
+        <!-- FAQ Item 1 -->
+        <div class="bg-background p-6 rounded-xl">
+          <button class="flex justify-between items-center w-full text-left focus:outline-none">
+            <h3 class="font-bold text-lg">How does the AI Motivation Generator work?</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="mt-3 text-textMedium">
+            Our AI Motivation Generator uses advanced algorithms to create personalized motivational content. You can input your own text or choose from our library of quotes, select a style and background image, and the AI will generate a beautiful, shareable image that resonates with your message.
+          </div>
+        </div>
+        
+        <!-- FAQ Item 2 -->
+        <div class="bg-background p-6 rounded-xl">
+          <button class="flex justify-between items-center w-full text-left focus:outline-none">
+            <h3 class="font-bold text-lg">Is my journal data private and secure?</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="mt-3 text-textMedium">
+            Absolutely. We take your privacy seriously. All journal entries are encrypted and only accessible by you. We never share your personal data with third parties, and you can export or delete your data at any time.
+          </div>
+        </div>
+        
+        <!-- FAQ Item 3 -->
+        <div class="bg-background p-6 rounded-xl">
+          <button class="flex justify-between items-center w-full text-left focus:outline-none">
+            <h3 class="font-bold text-lg">Can I use Soul Motivation on multiple devices?</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="mt-3 text-textMedium">
+            Yes! Your Soul Motivation account works seamlessly across all your devices. Use it on your phone, tablet, or computer - your data will sync automatically so you can access your motivation tools wherever you are.
+          </div>
+        </div>
+        
+        <!-- FAQ Item 4 -->
+        <div class="bg-background p-6 rounded-xl">
+          <button class="flex justify-between items-center w-full text-left focus:outline-none">
+            <h3 class="font-bold text-lg">Can I cancel my subscription at any time?</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="mt-3 text-textMedium">
+            Yes, you can cancel your subscription at any time. There are no long-term contracts or cancellation fees. If you cancel, you'll continue to have access to your paid features until the end of your billing period.
+          </div>
+        </div>
+        
+        <!-- FAQ Item 5 -->
+        <div class="bg-background p-6 rounded-xl">
+          <button class="flex justify-between items-center w-full text-left focus:outline-none">
+            <h3 class="font-bold text-lg">Do you offer refunds?</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="mt-3 text-textMedium">
+            We offer a 14-day money-back guarantee for all new subscribers. If you're not satisfied with Soul Motivation for any reason, contact our support team within 14 days of your purchase for a full refund.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4 bg-primary/10">
+        <div class="container mx-auto max-w-4xl text-center">
+          <h2 class="text-3xl font-bold mb-6">Ready to Transform Your Mindset?</h2>
+          <p class="text-lg text-textMedium mb-8 max-w-2xl mx-auto">
+            Join thousands of users who have discovered the power of daily motivation and mindfulness. Start your journey today.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <a href="#pricing" class="px-8 py-4 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all font-medium btn-hover-effect">
+              Get Started Now
+            </a>
+            <a href="#features" class="px-8 py-4 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-all font-medium btn-hover-effect">
+              Explore Features
+            </a>
+          </div>
+        </div>
+      </section>
+    
+      <!-- Footer -->
+      <footer class="bg-white py-16 px-4">
+        <div class="container mx-auto max-w-6xl">
+          <div class="grid md:grid-cols-4 gap-8">
+            <!-- Company Info -->
+            <div>
+              <h3 class="text-xl font-bold mb-4">Soul Motivation</h3>
+              <p class="text-textMedium mb-6">
+                Elevate your spirit and transform your life with our daily motivation tools and resources.
+              </p>
+              <div class="flex space-x-4">
+                <a href="#" class="text-textMedium hover:text-primary transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                  </svg>
+                </a>
+                <a href="#" class="text-textMedium hover:text-primary transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544-1.622 0-3.131-.476-4.402-1.291 1.524.18 3.045-.244 4.252-1.189-1.256-.023-2.317-.854-2.684-1.995.451.086.895.061 1.298-.049-1.381-.278-2.335-1.522-2.304-2.853.388.215.83.344 1.301.359-1.279-.855-1.641-2.544-.889-3.835 1.416 1.738 3.533 2.881 5.92 3.001-.419-1.796.944-3.527 2.799-3.527.825 0 1.572.349 2.096.907.654-.128 1.27-.368 1.824-.697-.215.671-.67 1.233-1.263 1.589.581-.07 1.135-.224 1.649-.453-.384.578-.87 1.084-1.433 1.489z"/>
+                  </svg>
+                </a>
+                <a href="#" class="text-textMedium hover:text-primary transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/>
+                  </svg>
+                </a>
+                <a href="#" class="text-textMedium hover:text-primary transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div>
+              <h3 class="font-bold mb-4">Quick Links</h3>
+              <ul class="space-y-2">
+                <li><a href="#features" class="text-textMedium hover:text-primary transition-all">Features</a></li>
+                <li><a href="#how-it-works" class="text-textMedium hover:text-primary transition-all">How It Works</a></li>
+                <li><a href="#testimonials" class="text-textMedium hover:text-primary transition-all">Testimonials</a></li>
+                <li><a href="#pricing" class="text-textMedium hover:text-primary transition-all">Pricing</a></li>
+                <li><a href="#faq" class="text-textMedium hover:text-primary transition-all">FAQ</a></li>
+              </ul>
+            </div>
+            
+            <!-- Resources -->
+            <div>
+              <h3 class="font-bold mb-4">Resources</h3>
+              <ul class="space-y-2">
+                <li><a href="#" class="text-textMedium hover:text-primary transition-all">Blog</a></li>
+                <li><a href="#" class="text-textMedium hover:text-primary transition-all">Community</a></li>
+                <li><a href="#" class="text-textMedium hover:text-primary transition-all">Support Center</a></li>
+                <li><a href="#" class="text-textMedium hover:text-primary transition-all">Privacy Policy</a></li>
+                <li><a href="#" class="text-textMedium hover:text-primary transition-all">Terms of Service</a></li>
+              </ul>
+            </div>
+            
+            <!-- Newsletter -->
+            <div>
+              <h3 class="font-bold mb-4">Subscribe to Our Newsletter</h3>
+              <p class="text-textMedium mb-4">Get weekly motivation tips and updates on new features.</p>
+              <form class="space-y-3">
+                <div>
+                  <input type="email" placeholder="Your email address" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                </div>
+                <button type="submit" class="w-full px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all">
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+          
+          <div class="mt-12 pt-8 border-t border-gray-200 text-center text-textMedium">
+            <p>&copy; 2025 Soul Motivation. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    
+      <!-- JavaScript -->
+      <script src="js/main.js"></script>
+      <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+          setTimeout(() => {
+            mobileMenu.classList.toggle('opacity-0');
+          }, 10);
+        });
+        
+        // Highlight active nav link
+        document.addEventListener('DOMContentLoaded', () => {
+          const currentPage = document.body.getAttribute('data-page');
+          const navLinks = document.querySelectorAll('.nav-link');
+          
+          navLinks.forEach(link => {
+            if (link.getAttribute('data-page') === currentPage) {
+              link.classList.add('text-primary');
+              link.querySelector('span').classList.add('w-full');
+            }
+          });
+        });
+      </script>
+    </body>
+    </html>
+      

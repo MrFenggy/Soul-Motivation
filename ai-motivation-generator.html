@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Motivation Generator - Soul Motivation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/interactions.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#A8D5BA',
+            secondary: '#D8BFD8',
+            accent: '#FFB347',
+            background: '#F7F7F2',
+            textDark: '#333333',
+            textMedium: '#666666',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .transition-all {
+        transition: all 0.3s ease;
+      }
+    }
+  </style>
+</head>
+<body class="font-sans bg-background text-textDark page-transition" data-page="motivation-generator">
+  <!-- Header Section -->
+  <header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center">
+        <a href="index.html" class="text-2xl font-bold text-primary">Soul Motivation</a>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-8">
+        <a href="index.html" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="home">
+          Home
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="index.html#features" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="features">
+          Features
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="index.html#how-it-works" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="how-it-works">
+          How It Works
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="index.html#testimonials" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="testimonials">
+          Testimonials
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="index.html#pricing" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="pricing">
+          Pricing
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="index.html#faq" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="faq">
+          FAQ
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+      </nav>
+      
+      <div class="hidden md:flex items-center space-x-4">
+        <button class="px-4 py-2 text-primary border border-primary rounded-lg hover:bg-primary hover:text-white transition-all btn-hover-effect">
+          Sign In
+        </button>
+        <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all btn-hover-effect">
+          Get Started
+        </button>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-textDark" id="mobile-menu-button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <div class="md:hidden hidden bg-white opacity-0 transition-all duration-300" id="mobile-menu">
+      <div class="px-4 py-4 space-y-4">
+        <a href="index.html" class="block font-medium hover:text-primary">Home</a>
+        <a href="index.html#features" class="block font-medium hover:text-primary">Features</a>
+        <a href="index.html#how-it-works" class="block font-medium hover:text-primary">How It Works</a>
+        <a href="index.html#testimonials" class="block font-medium hover:text-primary">Testimonials</a>
+        <a href="index.html#pricing" class="block font-medium hover:text-primary">Pricing</a>
+        <a href="index.html#faq" class="block font-medium hover:text-primary">FAQ</a>
+        <div class="pt-4 flex flex-col space-y-2">
+          <button class="px-4 py-2 text-primary border border-primary rounded-lg hover:bg-primary hover:text-white transition-all">
+            Sign In
+          </button>
+          <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="pt-32 pb-12 px-4 bg-gradient-to-b from-white to-background">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h1 class="text-4xl font-bold mb-4">AI Motivation Generator</h1>
+      <p class="text-lg text-textMedium max-w-2xl mx-auto">
+        Transform your thoughts into visual inspiration with our AI-powered motivation generator.
+        Create beautiful, shareable images that inspire and motivate.
+      </p>
+    </div>
+  </section>
+
+  <!-- Generator Section -->
+  <section class="py-12 px-4" id="ai-motivation-generator">
+    <div class="container mx-auto max-w-6xl">
+      <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 card-hover">
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Left Column: Options -->
+          <div>
+            <h2 class="text-2xl font-bold mb-6">Create Your Motivation</h2>
+            
+            <!-- Generation Options -->
+            <div class="mb-8">
+              <h3 class="font-medium mb-4">Choose Generation Method</h3>
+              <div class="flex space-x-4 mb-6">
+                <button id="random-btn" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all flex-1 btn-hover-effect">
+                  Random Quote
+                </button>
+                <button id="custom-btn" class="px-4 py-2 border border-primary text-primary rounded-lg hover:bg-primary/10 transition-all flex-1 btn-hover-effect">
+                  Custom Quote
+                </button>
+              </div>
+              
+              <!-- Custom Quote Input (initially hidden) -->
+              <div id="custom-quote-input" class="hidden opacity-0 transition-all duration-300">
+                <label for="quote-text" class="block text-textMedium mb-2">Enter your motivational quote:</label>
+                <textarea id="quote-text" class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none input-focus-effect" 
+                  rows="3" placeholder="Type your inspirational quote here..."></textarea>
+              </div>
+            </div>
+            
+            <!-- Image Options -->
+            <div class="mb-8">
+              <h3 class="font-medium mb-4">Choose Background</h3>
+              <div class="grid grid-cols-3 gap-3 mb-4">
+                <!-- Default Backgrounds -->
+                <div class="bg-gradient-to-r from-blue-400 to-purple-500 h-20 rounded-lg cursor-pointer border-2 border-transparent hover:border-primary transition-all bg-option" data-bg="gradient-1"></div>
+                <div class="bg-gradient-to-r from-green-400 to-blue-500 h-20 rounded-lg cursor-pointer border-2 border-transparent hover:border-primary transition-all bg-option" data-bg="gradient-2"></div>
+                <div class="bg-gradient-to-r from-yellow-400 to-orange-500 h-20 rounded-lg cursor-pointer border-2 border-transparent hover:border-primary transition-all bg-option" data-bg="gradient-3"></div>
+              </div>
+              
+              <!-- Upload Option -->
+              <div class="relative border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-primary transition-all cursor-pointer">
+                <input type="file" id="image-upload" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/*">
+                <div class="flex flex-col items-center justify-center py-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-textMedium mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  <p class="text-textMedium">Upload your own image</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Style Options -->
+            <div class="mb-8">
+              <h3 class="font-medium mb-4">Choose Style</h3>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="text-center cursor-pointer style-option" data-style="minimal">
+                  <div class="bg-gray-100 rounded-lg p-3 mb-2 hover:bg-gray-200 transition-all">
+                    <span class="block font-bold">Aa</span>
+                  </div>
+                  <span class="text-sm">Minimal</span>
+                </div>
+                <div class="text-center cursor-pointer style-option" data-style="bold">
+                  <div class="bg-gray-100 rounded-lg p-3 mb-2 hover:bg-gray-200 transition-all">
+                    <span class="block font-bold text-lg">Aa</span>
+                  </div>
+                  <span class="text-sm">Bold</span>
+                </div>
+                <div class="text-center cursor-pointer style-option" data-style="script">
+                  <div class="bg-gray-100 rounded-lg p-3 mb-2 hover:bg-gray-200 transition-all">
+                    <span class="block italic">Aa</span>
+                  </div>
+                  <span class="text-sm">Script</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Generate Button -->
+            <button id="generate-btn" class="w-full py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all font-medium btn-hover-effect">
+              Generate Motivation
+            </button>
+          </div>
+          
+          <!-- Right Column: Preview -->
+          <div>
+            <h2 class="text-2xl font-bold mb-6">Preview</h2>
+            <div id="preview-container" class="bg-gradient-to-r from-blue-400 to-purple-500 rounded-xl shadow-lg overflow-hidden aspect-[4/5] flex items-center justify-center p-8 mb-6">
+              <p id="preview-text" class="text-white text-2xl font-bold text-center">
+                Your motivational quote will appear here. Click "Generate Motivation" to begin.
+              </p>
+            </div>
+            
+            <div class="flex space-x-3">
+              <button id="download-btn" class="flex-1 py-3 bg-secondary text-white rounded-lg hover:bg-secondary/90 transition-all font-medium flex items-center justify-center btn-hover-effect">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download
+              </button>
+              <button id="share-btn" class="flex-1 py-3 border border-secondary text-secondary rounded-lg hover:bg-secondary/10 transition-all font-medium

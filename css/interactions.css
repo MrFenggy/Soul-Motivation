@@ -1,0 +1,97 @@
+/* css/interactions.css */
+/* 全局交互样式 */
+
+/* 按钮悬停效果 */
+.btn-hover-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-hover-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+}
+
+.btn-hover-effect:hover::after {
+  width: 300%;
+  height: 300%;
+}
+
+/* 卡片悬停效果 */
+.card-hover {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .card-hover:hover {
+    transform: translateY(-2px); /* 在移动设备上减小效果 */
+  }
+}
+
+/* 输入框焦点效果 */
+.input-focus-effect {
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-focus-effect:focus {
+  border-color: theme('colors.primary');
+  box-shadow: 0 0 0 3px theme('colors.primary.DEFAULT / 0.2');
+}
+
+/* 页面过渡效果 */
+.page-transition {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 导航链接下划线动画 */
+.nav-link-underline {
+  position: relative;
+}
+
+.nav-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: theme('colors.primary.DEFAULT');
+  transition: width 0.3s;
+}
+
+.nav-link-underline:hover::after {
+  width: 100%;
+}
+
+/* 加载动画 */
+.loading-spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

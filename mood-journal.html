@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood Journal - Soul Motivation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/interactions.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#A8D5BA',
+            secondary: '#D8BFD8',
+            accent: '#FFB347',
+            background: '#F7F7F2',
+            textDark: '#333333',
+            textMedium: '#666666',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .transition-all {
+        transition: all 0.3s ease;
+      }
+    }
+  </style>
+</head>
+<body class="font-sans bg-background text-textDark page-transition" data-page="mood-journal">
+  <!-- Header Section -->
+  <header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center">
+        <a href="index.html" class="text-2xl font-bold text-primary">Soul Motivation</a>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-8">
+        <a href="index.html" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="home">
+          Home
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="index.html#features" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="features">
+          Features
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="index.html#how-it-works" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="how-it-works">
+          How It Works
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="index.html#testimonials" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="testimonials">
+          Testimonials
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="index.html#pricing" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="pricing">
+          Pricing
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="index.html#faq" class="font-medium hover:text-primary transition-all relative nav-link nav-link-underline" data-page="faq">
+          FAQ
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+      </nav>
+      
+      <div class="hidden md:flex items-center space-x-4">
+        <button class="px-4 py-2 text-primary border border-primary rounded-lg hover:bg-primary hover:text-white transition-all btn-hover-effect">
+          Sign In
+        </button>
+        <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all btn-hover-effect">
+          Get Started
+        </button>
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-textDark" id="mobile-menu-button">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <div class="md:hidden hidden bg-white opacity-0 transition-all duration-300" id="mobile-menu">
+      <div class="px-4 py-4 space-y-4">
+        <a href="index.html" class="block font-medium hover:text-primary">Home</a>
+        <a href="index.html#features" class="block font-medium hover:text-primary">Features</a>
+        <a href="index.html#how-it-works" class="block font-medium hover:text-primary">How It Works</a>
+        <a href="index.html#testimonials" class="block font-medium hover:text-primary">Testimonials</a>
+        <a href="index.html#pricing" class="block font-medium hover:text-primary">Pricing</a>
+        <a href="index.html#faq" class="block font-medium hover:text-primary">FAQ</a>
+        <div class="pt-4 flex flex-col space-y-2">
+          <button class="px-4 py-2 text-primary border border-primary rounded-lg hover:bg-primary hover:text-white transition-all">
+            Sign In
+          </button>
+          <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="pt-32 pb-12 px-4 bg-gradient-to-b from-white to-background">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h1 class="text-4xl font-bold mb-4">Mood Journal</h1>
+      <p class="text-lg text-textMedium max-w-2xl mx-auto">
+        Track your emotional journey and reflect on your growth. Our private journaling tool helps you understand patterns and celebrate progress.
+      </p>
+    </div>
+  </section>
+
+  <!-- Journal Dashboard -->
+  <section class="py-12 px-4" id="mood-journal">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Left Sidebar: Calendar & Stats -->
+        <div>
+          <!-- Calendar -->
+          <div class="bg-white rounded-2xl shadow-lg p-6 mb-8 card-hover">
+            <h2 class="text-xl font-bold mb-4">Calendar</h2>
+            
+            <!-- Month Navigation -->
+            <div class="flex justify-between items-center mb-4">
+              <button class="text-textMedium hover:text-textDark transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <h3 class="font-medium">March 2025</h3>
+              <button class="text-textMedium hover:text-textDark transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+            
+            <!-- Calendar Grid -->
+            <div class="grid grid-cols-7 gap-1">
+              <!-- Weekday Headers -->
+              <div class="text-center text-xs text-textMedium py-1">S</div>
+              <div class="text-center text-xs text-textMedium py-1">M</div>
+              <div class="text-center text-xs text-textMedium py-1">T</div>
+              <div class="text-center text-xs text-textMedium py-1">W</div>
+              <div class="text-center text-xs text-textMedium py-1">T</div>
+              <div class="text-center text-xs text-textMedium py-1">F</div>
+              <div class="text-center text-xs text-textMedium py-1">S</div>
+              
+              <!-- Calendar Days (example for March 2025) -->
+              <!-- Previous month days (grayed out) -->
+              <div class="text-center text-xs text-gray-300 py-2">23</div>
+              <div class="text-center text-xs text-gray-300 py-2">24</div>
+              <div class="text-center text-xs text-gray-300 py-2">25</div>
+              <div class="text-center text-xs text-gray-300 py-2">26</div>
+              <div class="text-center text-xs text-gray-300 py-2">27</div>
+              <div class="text-center text-xs text-gray-300 py-2">28</div>
+              <div class="text-center text-xs py-2">1</div>
+              
+              <!-- First week -->
+              <div class="text-center text-xs py-2">2</div>
+              <div class="text-center text-xs py-2">3</div>
+              <div class="text-center text-xs py-2">4</div>
+              <div class="text-center text-xs py-2">5</div>
+              <div class="text-center text-xs py-2">6</div>
+              <div class="text-center text-xs py-2">7</div>
+              <div class="text-center text-xs py-2">8</div>
+              
+              <!-- Second week -->
+              <div class="text-center text-xs py-2">9</div>
+              <div class="text-center text-xs py-2">10</div>
+              <div class="text-center text-xs py-2">11</div>
+              <div class="text-center text-xs py-2">12</div>
+              <div class="text-center text-xs py-2">13</div>
+              <div class="text-center text-xs py-2">14</div>
+              <div class="text-center text-xs py-2">15</div>
+              
+              <!-- Third week -->
+              <div class="text-center text-xs py-2">16</div>
+              <div class="text-center text-xs py-2">17</div>
+              <div class="text-center text-xs py-2">18</div>
+              <div class="text-center text-xs py-2">19</div>
+              <div class="text-center text-xs py-2">20</div>
+              <div class="text-center text-xs py-2">21</div>
+              <div class="text-center text-xs py-2 bg-primary/20 rounded-full font-bold">22</div>
+              
+              <!-- Fourth week -->
+              <div class="text-center text-xs py-2">23</div>
+              <div class="text-center text-xs py-2">24</div>
+              <div class="text-center text-xs py-2">25</div>
+              <div class="text-center text-xs py-2">26</div>
+              <div class="text-center text-xs py-2">27</div>
+              <div class="text-center text-xs py-2">28</div>
+              <div class="text-center text-xs py-2">29</div>
+              
+              <!-- Fifth week -->
+              <div class="text-center text-xs py-2">30</div>
+              <div class="text-center text-xs py-2">31</div>
+              <div class="text-center text-xs text-gray-300 py-2">1</div>
+              <div class="text-center text-xs text-gray-300 py-2">2</div>
+              <div class="text-center text-xs text-gray-300 py-2">3</div>
+              <div class="text-center text-xs text-gray-300 py-2">4</div>
+              <div class="text-center text-xs text-gray-300 py-2">5</div>
+            </div>
+            
+            <!-- Mood Legend -->
+            <div class="mt-4 pt-4 border-t border-gray-100">
+              <h4 class="text-sm font-medium mb-2">Mood Legend</h4>
+              <div class="flex items-center space-x-4 text-xs">
+                <div class="flex items-center">
+                  <div class="w-3 h-3 rounded-full bg-green-400 mr-1"></div>
+                  <span>Happy</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-3 h-3 rounded-full bg-blue-400 mr-1"></div>
+                  <span>Calm</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-3 h-3 rounded-full bg-yellow-400 mr-1"></div>
+                  <span>Neutral</span>
+                </div>
+                <div class="flex items-center">
+                  <div class="w-3 h-3 rounded-full bg-red-400 mr-1"></div>
+                  <span>Sad</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Mood Analytics -->
+          <div class="bg-white rounded-2xl shadow-lg p-6 card-hover">
+            <h2 class="text-xl font-bold mb-4">Mood Analytics</h2>
+            
+            <!-- Mood Chart (placeholder) -->
+            <div class="bg-gray-100 rounded-lg p-4 mb-4 h-40 flex items-center justify-center">
+              <p class="text-textMedium text-sm text-center">
+                Mood trend visualization will appear here.
+                <br>
+                <span class="text-xs">(Premium feature)</span>
+              </p>
+            </div>
+            
+            <!-- Weekly Summary -->
+            <h3 class="font-medium text-sm mb-2">This Week's Summary</h3>
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <span class="text-sm">Most frequent mood:</span>
+                <span class="text-sm font-medium">Calm (3 days)</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm">Mood improvement:</span>
+                <span class="text-sm font-medium text-green-500">+12% from last week</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm">Journaling streak:</span>
+                <span class="text-sm font-medium">5 days</span>
+              </div>
+            </div>
+            
+            <!-- Upgrade Prompt -->
+            <div class="mt-4 pt-4 border-t border-gray-100">
+              <p class="text-sm text-textMedium mb-2">
+                Unlock advanced analytics and insights with Premium.
+              </p>
+              <button class="w-full py-2 text-sm bg-secondary text-white rounded-lg hover:bg-secondary/90 transition-all">
+                Upgrade to Premium
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Middle: Journal Entry -->
+        <div class="md:col-span-2">
+          <div class="bg-white rounded-2xl shadow-lg p-6">
+            <!-- Date & Mood Selection -->
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-xl font-bold">March 22, 2025</h2>
+              <div class="flex items-center space-x-2">
+                <span class="text-sm text-textMedium">Mood:</span>
+                <select class="border border-gray-200 rounded-lg px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary">
+                  <option value="happy">Happy</option>
+                  <option value="calm" selected>Calm</option>
+                  <option value="neutral">Neutral</option>
+                  <option value="sad">Sad</option>
+                  <option value="angry">Angry</option>
+                  <option value="anxious">Anxious</option>
+                </select>
+              </div>
+            </div>
+            
+            <!-- Journal Title -->
+            <div class="mb-4">
+              <input type="text" placeholder="Entry Title" class="w-full border-0 border-b border-gray-200 pb-2 text-lg font-medium focus:outline-none focus:border-primary" value="Finding Balance in Chaos">
+            </div>
+            
+            <!-- Journal Content -->
+            <div class="mb-6">
+              <textarea class="w-full h-64 border border-gray-200 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Write your thoughts here...">Today was a relatively calm day despite the usual chaos at work. I started implementing the mindfulness techniques I learned last week, and they seem to be helping me maintain my composure in stressful situations.
+
+I noticed that taking just 5 minutes to breathe deeply before important meetings made a significant difference in how I handled the pressure. I felt more present and less reactive to others' stress.
+
+Tomorrow I want to try extending my morning meditation to 15 minutes and see if that helps even more. Small steps, but I'm proud of the progress I'm making.</textarea>
+            </div>
+            
+            <!-- Tags & Actions -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-2">
+                <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">mindfulness</span>
+                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">progress</span>
+                <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">work</span>
+                <button class="text-textMedium hover:text-textDark text-xs flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                  </svg>
+                  Add Tag
+                </button>
+              </div>
+              
+              <!-- Actions -->
+              <div class="flex space-x-2">
+                <button class="px-3 py-1 text-sm border border-gray-200 rounded-lg hover:bg-gray-50 transition-all">
+                  Discard
+                </button>
+                <button class="px-3 py-1 text-sm bg-primary text-white rounded-lg hover:bg-primary/90 transition-all">
+                  Save Entry
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Reflection Prompts -->
+          <div class="mt-8 bg-white rounded-2xl shadow-lg p-6">
+            <h2 class="text-xl font-bold mb-4">Reflection Prompts</h2>
+            <div class="space-y-4">
+              <div class="p-4 bg-primary/10 rounded-lg">
+                <p class="font-medium mb-2">What made you feel most grateful today?</p>
+                <button class="text-sm text-primary hover:text-primary/80 transition-all flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                  Add to Journal
+                </button>
+              </div>
+              <div class="p-4 bg-secondary/10 rounded-lg">
+                <p class="font-medium mb-2">What is one small win you achieved today?</p>
+                <button class="text-sm text-secondary hover:text-secondary/80 transition-all flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                  Add to Journal
+                </button>
+              </div>
+              <div class="p-4 bg-accent/10 rounded-lg">
+                <p class="font-medium mb-2">What would you like to improve tomorrow?</p>
+                <button class="text-sm text-accent hover:text-accent/80 transition-all flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                  Add to Journal
+                </button>
+              </div>
+            </div>
+            <button class="mt-4 w-full py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-all text-sm">
+              Show More Prompts
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Previous Entries Section -->
+  <section class="py-12 px-4 bg-white">
+    <div class="container mx-auto max-w-6xl">
+      <h2 class="text-2xl font-bold mb-8 text-center">Previous Entries</h2>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Entry Card 1 -->
+        <div class="bg-background rounded-xl shadow-md p-5 hover:shadow-lg transition-all">
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <h3 class="font-medium">March 21, 2025</h3>
+              <p class="text-sm text-textMedium">Yesterday</p>
+            </div>
+            <div class="bg-blue-400 w-6 h-6 rounded-full" title="Calm"></div>
+          </div>
+          <h4 class="font-medium mb-2">Working Through Challenges</h4>
+          <p class="text-sm text-textMedium line-clamp-3 mb-3">
+            Today was challenging but I managed to stay focused on my priorities. The presentation went better than expected...
+          </p>
+          <div class="flex justify-between items-center">
+            <div class="flex space-x-1">
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full">work</span>
+              <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded-full">growth</span>
+            </div>
+            <button class="text-primary text-sm hover:text-primary/80 transition-all">Read</button>
+          </div>
+        </div>
+        
+        <!-- Entry Card 2 -->
+        <div class="bg-background rounded-xl shadow-md p-5 hover:shadow-lg transition-all">
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <h3 class="font-medium">March 20, 2025</h3>
+              <p class="text-sm text-textMedium">2 days ago</p>
+            </div>
+            <div class="bg-green-400 w-6 h-6 rounded-full" title="Happy"></div>
+          </div>
+          <h4 class="font-medium mb-2">A Day of Achievements</h4>
+          <p class="text-sm text-textMedium line-clamp-3 mb-3">
+            I'm feeling really good about completing the project ahead of schedule. The team's reaction was so positive...
+          </p>
+          <div class="flex justify-between items-center">
+            <div class="flex space-x-1">
+              <span class="bg-green-100 text-green-800 text-xs px-2 py-0.5 rounded-full">success</span>
+              <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full">work</span>
+            </div>
+            <button class="text-primary text-sm hover:text-primary/80 transition-all">Read</button>
+          </div>
+        </div>
+        
+        <!-- Entry Card 3 -->
+        <div class="bg-background rounded-xl shadow-md p-5 hover:shadow-lg transition-all">
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <h3 class="font-medium">March 19, 2025</h3>
+              <p class="text-sm text-textMedium">3 days ago</p>
+            </div>
+            <div class="bg-yellow-400 w-6 h-6 rounded-full" title="Neutral"></div>
+          </div>
+          <h4 class="font-medium mb-2">Finding My Center</h4>
+          <p class="text-sm text-textMedium line-clamp-3 mb-3">
+            Today was neither good nor bad, just a normal day. I'm trying to practice more mindfulness even during routine activities...
+          </p>
+          <div class="flex justify-between items-center">
+            <div class="flex space-x-1">
+              <span class="bg-purple-100 text-purple-800 text-xs px-2 py-0.5 rounded-full">mindfulness</span>
+              <span class="bg-orange-100 text-orange-800 text-xs px-2 py-0.5 rounded-full">routine</span>
+            </div>
+            <button class="text-primary text-sm hover:text-primary/80 transition-all">Read</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-8 text-center">
+        <button class="px-6 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-all text-sm">
+          View All Entries
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-100 py-12 px-4">
+    <div class="container mx-auto max-w-6xl">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <a href="index.html" class="text-xl font-bold text-primary">Soul Motivation</a>
+          <p class="mt-2 text-sm text-textMedium">
+            Your companion for emotional wellness and personal growth.
+          </p>
+          <div class="mt-4 flex space-x-4">
+            <a href="#" class="text-textMedium hover:text-primary transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+              </svg>
+            </a>
+            <a href="#" class="text-textMedium hover:text-primary transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="#" class="text-textMedium hover:text-primary transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="font-medium mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="index.html" class="text-textMedium hover:text-primary transition-all">Home</a></li>
+            <li><a href="index.html#features" class="text-textMedium hover:text-primary transition-all">Features</a></li>
+            <li><a href="index.html#how-it-works" class="text-textMedium hover:text-primary transition-all">How It Works</a></li>
+            <li><a href="index.html#pricing" class="text-textMedium hover:text-primary transition-all">Pricing</a></li>
+            <li><a href="index.html#faq" class="text-textMedium hover:text-primary transition-all">FAQ</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-medium mb-4">Tools</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="mood-journal.html" class="text-textMedium hover:text-primary transition-all">Mood Journal</a></li>
+            <li><a href="ai-motivation-generator.html" class="text-textMedium hover:text-primary transition-all">AI Motivation Generator</a></li>
+            <li><a href="#" class="text-textMedium hover:text-primary transition-all">Habit Tracker</a></li>
+            <li><a href="#" class="text-textMedium hover:text-primary transition-all">Meditation Timer</a></li>
+            <li><a href="#" class="text-textMedium hover:text-primary transition-all">Goal Setting</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="font-medium mb-4">Contact & Support</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="text-textMedium hover:text-primary transition-all">Contact Us</a></li>
+            <li><a href="#" class="text-textMedium hover:text-primary transition-all">Help Center</a></li>
+            <li><a href="#" class="text-textMedium hover:text-primary transition-all">Privacy Policy</a></li>
+            <li><a href="#" class="text-textMedium hover:text-primary transition-all">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="mt-12 pt-8 border-t border-gray-100 text-center text-sm text-textMedium">
+        <p>&copy; 2025 Soul Motivation. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="js/app.js"></script>
+  <script src="js/modules/mood-journal.js"></script>
+</body>
+</html>
