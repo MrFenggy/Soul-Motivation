@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Relief Games - Soul Motivation</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .game-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            overflow: hidden;
+        }
+        
+        .game-modal.active {
+            display: block;
+        }
+        
+        .game-container {
+            background: #000;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .fullscreen-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 10000;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+        }
+
+        .fullscreen-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            z-index: 10000;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+        
+        .game-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 9998;
+        }
+        
+        .game-card {
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-hover-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-hover-effect:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transition: all 0.6s;
+        }
+        
+        .btn-hover-effect:hover:after {
+            left: 100%;
+        }
+        
+        .game-thumbnail {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #f0f0f0;
+        }
+        
+        .game-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .game-info {
+            flex-grow: 1;
+        }
+        
+        .game-button-container {
+            margin-top: auto;
+            padding-top: 1rem;
+        }
+
+        /* 添加游戏缩略图占位符样式 */
+        .game-thumbnail-placeholder {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+            color: #666;
+            font-weight: 500;
+            text-align: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <a href="index.html" class="flex items-center text-gray-700 hover:text-gray-900 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- 主要内容区 -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-3xl font-bold mb-6 text-center">Stress Relief Games</h1>
+            <p class="text-gray-600 text-center mb-8">
+                Take a break and enjoy our collection of relaxing games. Choose your favorite and let the stress melt away.
+            </p>
+
+            <!-- 游戏网格 -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+<!-- 游戏1: Count Masters -->
+<div class="game-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all">
+    <div class="relative overflow-hidden">
+        <!-- 游戏缩略图 -->
+        <div class="game-thumbnail-placeholder" id="count-masters-placeholder">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                Count Masters
+            </div>
+        </div>
+        <img src="https://imgs.crazygames.com/count-masters-stickman-games_16x9/20250220041115/count-masters-stickman-games_16x9-cover?metadata=none&quality=40&width=273&fit=crop&dpr=2" 
+             alt="Count Masters" 
+             class="game-thumbnail"
+             loading="lazy"
+             style="display: none;"
+             onload="this.style.display='block'; document.getElementById('count-masters-placeholder').style.display='none';"
+             onerror="this.onerror=null; this.style.display='none';">
+        <!-- 游戏时长标签 -->
+        <div class="absolute top-3 right-3 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+            ~10 min
+        </div>
+    </div>
+    <div class="p-5 game-content">
+        <div class="game-info">
+            <h3 class="text-xl font-bold mb-2">Count Masters</h3>
+            <p class="text-gray-600 mb-4">A fun stickman running game with crowd mechanics</p>
+                            
+            <!-- 游戏玩法介绍 -->
+            <div class="mb-4">
+                <h4 class="font-semibold text-sm uppercase text-gray-500 mb-2">How to Play</h4>
+                <p class="text-sm text-gray-600">
+                    Swipe left or right to move your crowd. Collect more stickmen by running through number gates.
+                    Avoid obstacles and defeat enemies by having more stickmen in your crowd. Perfect for quick 
+                    stress relief sessions.
+                </p>
+            </div>
+        </div>
+                        
+        <!-- 游戏按钮 - 放在底部 -->
+        <div class="game-button-container">
+            <button onclick="openGame('count-masters', 'https://www.crazygames.com/embed/count-masters-stickman-games')" 
+                    class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all font-medium flex items-center justify-center btn-hover-effect">
+                Play Game
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+            </button>
+        </div>
+    </div>
+                </div>
+
+                <!-- 游戏2: Solar Smash -->
+                <div class="game-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all">
+                    <div class="relative overflow-hidden">
+                        <!-- 游戏缩略图 -->
+                        <div class="game-thumbnail-placeholder" id="solar-smash-placeholder">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                                </svg>
+                                Solar Smash
+                            </div>
+                        </div>
+                        <img src="https://imgs.crazygames.com/solar-smash_16x9/20240722073047/solar-smash_16x9-cover?metadata=none&quality=40&width=273&fit=crop&dpr=2" 
+                             alt="Solar Smash" 
+                             class="game-thumbnail"
+                             loading="lazy"
+                             style="display: none;"
+                             onload="this.style.display='block'; document.getElementById('solar-smash-placeholder').style.display='none';"
+                             onerror="this.onerror=null; this.style.display='none';">
+                        <!-- 游戏时长标签 -->
+                        <div class="absolute top-3 right-3 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+                            ~20 min
+                        </div>
+                    </div>
+                    <div class="p-5 game-content">
+                        <div class="game-info">
+                            <h3 class="text-xl font-bold mb-2">Solar Smash</h3>
+                            <p class="text-gray-600 mb-4">Explore and destroy planets in this relaxing sandbox game</p>
+                            
+                            <!-- 游戏玩法介绍 -->
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-sm uppercase text-gray-500 mb-2">How to Play</h4>
+                                <p class="text-sm text-gray-600">
+                                    Select different weapons and tools from the menu and tap on the planet to use them.
+                                    Experiment with different combinations to create unique destruction patterns.
+                                    A perfect way to release tension through creative destruction.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- 游戏按钮 - 放在底部 -->
+                        <div class="game-button-container">
+                            <button onclick="openGame('solar-smash', 'https://www.crazygames.com/embed/solar-smash')" 
+                                    class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all font-medium flex items-center justify-center btn-hover-effect">
+                                Play Game
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 游戏3: Bridge Race -->
+                <div class="game-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all">
+                    <div class="relative overflow-hidden">
+                        <!-- 游戏缩略图 -->
+                        <div class="game-thumbnail-placeholder" id="bridge-race-placeholder">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                </svg>
+                                Bridge Race
+                            </div>
+                        </div>
+                        <img src="https://imgs.crazygames.com/bridge-race_16x9/20241227062023/bridge-race_16x9-cover?metadata=none&quality=70&width=711" 
+                             alt="Bridge Race" 
+                             class="game-thumbnail"
+                             loading="lazy"
+                             style="display: none;"
+                             onload="this.style.display='block'; document.getElementById('bridge-race-placeholder').style.display='none';"
+                             onerror="this.onerror=null; this.style.display='none';">
+                        <!-- 游戏时长标签 -->
+                        <div class="absolute top-3 right-3 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+                            ~15 min
+                        </div>
+                    </div>
+                    <div class="p-5 game-content">
+                        <div class="game-info">
+                            <h3 class="text-xl font-bold mb-2">Bridge Race</h3>
+                            <p class="text-gray-600 mb-4">Build bridges and race to the finish line</p>
+                            
+                            <!-- 游戏玩法介绍 -->
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-sm uppercase text-gray-500 mb-2">How to Play</h4>
+                                <p class="text-sm text-gray-600">
+                                    Collect blocks of your color to build bridges and advance to higher levels.
+                                    Avoid opponents and try to reach the top first. Use strategy to block 
+                                    opponents while efficiently collecting your own blocks. Great for quick
+                                    mental refreshment.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- 游戏按钮 - 放在底部 -->
+                        <div class="game-button-container">
+                            <button onclick="openGame('bridge-race', 'https://www.crazygames.com/embed/bridge-race')" 
+                                    class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all font-medium flex items-center justify-center btn-hover-effect">
+                                Play Game
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 游戏4: MX Offroad Master -->
+                <div class="game-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all">
+                    <div class="relative overflow-hidden">
+                        <!-- 游戏缩略图 -->
+                        <div class="game-thumbnail-placeholder" id="mx-offroad-placeholder">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                </svg>
+                                MX Offroad Master
+                            </div>
+                        </div>
+                        <img src="https://imgs.crazygames.com/mx-offroad-master/20230206090722/mx-offroad-master-cover?metadata=none&quality=70&width=571.5" 
+                             alt="MX Offroad Master" 
+                             class="game-thumbnail"
+                             loading="lazy"
+                             style="display: none;"
+                             onload="this.style.display='block'; document.getElementById('mx-offroad-placeholder').style.display='none';"
+                             onerror="this.onerror=null; this.style.display='none';">
+                        <!-- 游戏时长标签 -->
+                        <div class="absolute top-3 right-3 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+                            ~25 min
+                        </div>
+                    </div>
+                    <div class="p-5 game-content">
+                        <div class="game-info">
+                            <h3 class="text-xl font-bold mb-2">MX Offroad Master</h3>
+                            <p class="text-gray-600 mb-4">Master challenging offroad tracks with your motorcycle</p>
+                            
+                            <!-- 游戏玩法介绍 -->
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-sm uppercase text-gray-500 mb-2">How to Play</h4>
+                                <p class="text-sm text-gray-600">
+                                    Use arrow keys or WASD to control your motorcycle. Balance is key - use Up/W to accelerate,
+                                    Down/S to brake, and Left/Right (A/D) to adjust your weight. Complete challenging tracks
+                                    while maintaining balance. Perfect for focusing your mind away from stress.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- 游戏按钮 - 放在底部 -->
+                        <div class="game-button-container">
+                            <button onclick="openGame('mx-offroad-master', 'https://www.crazygames.com/embed/mx-offroad-master')" 
+                                    class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all font-medium flex items-center justify-center btn-hover-effect">
+                                Play Game
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+<!-- 游戏5: Traffic Rider -->
+<div class="game-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all">
+    <div class="relative overflow-hidden">
+        <!-- 游戏缩略图 -->
+        <div class="game-thumbnail-placeholder" id="traffic-rider-placeholder">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+                Traffic Rider
+            </div>
+        </div>
+        <img src="https://imgs.crazygames.com/traffic-rider-vvq_16x9/20250320102250/traffic-rider-vvq_16x9-cover?metadata=none&quality=70&width=413" 
+             alt="Traffic Rider" 
+             class="game-thumbnail"
+             loading="lazy"
+             style="display: none;"
+             onload="this.style.display='block'; document.getElementById('traffic-rider-placeholder').style.display='none';"
+             onerror="this.onerror=null; this.style.display='none';">
+        <!-- 游戏时长标签 -->
+        <div class="absolute top-3 right-3 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+            ~15 min
+        </div>
+    </div>
+    <div class="p-5 game-content">
+        <div class="game-info">
+            <h3 class="text-xl font-bold mb-2">Traffic Rider</h3>
+            <p class="text-gray-600 mb-4">An exciting motorcycle racing game through traffic</p>
+            <!-- 游戏玩法介绍 -->
+            <div class="mb-4">
+                <h4 class="font-semibold text-sm uppercase text-gray-500 mb-2">How to Play</h4>
+                <p class="text-sm text-gray-600">
+                    Control your motorcycle with arrow keys or WASD. Navigate through traffic at high speeds,
+                    complete missions and earn points by near-misses. Perfect for adrenaline rush and
+                    focusing your mind away from everyday stress.
+                </p>
+            </div>
+        </div>
+                        
+        <!-- 游戏按钮 - 放在底部 -->
+        <div class="game-button-container">
+            <button onclick="openGame('traffic-rider', 'https://www.crazygames.com/embed/traffic-rider-vvq')" 
+                    class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all font-medium flex items-center justify-center btn-hover-effect">
+                Play Game
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+            </button>
+        </div>
+    </div>
+                </div>
+                
+                <!-- 游戏6: Flappy Bird -->
+                <div class="game-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all">
+                    <div class="relative overflow-hidden">
+                        <!-- 游戏缩略图 -->
+                        <div class="game-thumbnail-placeholder" id="flappy-bird-placeholder">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                </svg>
+                                Flappy Bird
+                            </div>
+                        </div>
+                        <img src="https://imgs.crazygames.com/flappybirdflash2.png?metadata=none&quality=70&width=711" 
+                             alt="Flappy Bird" 
+                             class="game-thumbnail"
+                             loading="lazy"
+                             style="display: none;"
+                             onload="this.style.display='block'; document.getElementById('flappy-bird-placeholder').style.display='none';"
+                             onerror="this.onerror=null; this.style.display='none';">
+                        <!-- 游戏时长标签 -->
+                        <div class="absolute top-3 right-3 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">
+                            ~3 min
+                        </div>
+                    </div>
+                    <div class="p-5 game-content">
+                        <div class="game-info">
+                            <h3 class="text-xl font-bold mb-2">Flappy Bird</h3>
+                            <p class="text-gray-600 mb-4">The classic bird-flapping game that tests your reflexes</p>
+                            
+                            <!-- 游戏玩法介绍 -->
+                            <div class="mb-4">
+                                <h4 class="font-semibold text-sm uppercase text-gray-500 mb-2">How to Play</h4>
+                                <p class="text-sm text-gray-600">
+                                    Tap the screen or press spacebar to make the bird flap its wings and stay airborne.
+                                    Navigate through the pipes without touching them. Simple yet challenging, this game
+                                    helps you focus entirely on the present moment - perfect for mindfulness practice.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- 游戏按钮 - 放在底部 -->
+                        <div class="game-button-container">
+                            <button onclick="openGame('flappy-bird', 'https://www.crazygames.com/embed/flappy-bird')" 
+                                    class="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all font-medium flex items-center justify-center btn-hover-effect">
+                                Play Game
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 更多游戏提示 -->
+            <div class="text-center mt-12">
+                <h3 class="text-xl font-bold mb-4">Need More Stress Relief?</h3>
+                <p class="text-gray-600 mb-6">
+                    We regularly update our collection with new games. Check back soon for more stress-busting entertainment!
+                </p>
+                <a href="index.html#features" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all font-medium inline-block btn-hover-effect">
+                    Explore More Features
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- 游戏模态框 -->
+    <div id="game-modal" class="game-modal">
+        <div class="game-container">
+            <button id="close-game" class="close-btn" aria-label="Close game">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <button id="fullscreen-toggle" class="fullscreen-btn" aria-label="Toggle fullscreen">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"/>
+                </svg>
+            </button>
+            <iframe id="game-frame" class="game-frame" src="" allow="gamepad *;" title="Game"></iframe>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay"></div>
+    
+    <script>
+        // 确保页面加载时遮罩层是隐藏的
+        document.addEventListener('DOMContentLoaded', function() {
+            const overlay = document.getElementById('overlay');
+            if (overlay) {
+                overlay.style.display = 'none';
+            }
+            
+            // 尝试加载图片
+            tryLoadGameImages();
+        });
+        
+        // 尝试加载游戏图片
+        function tryLoadGameImages() {
+            // 直接替换为您提供的图片地址
+            const gameImagesMap = {
+                'count-masters': 'https://your-provided-image-url-for-count-masters.jpg',
+                'solar-smash': 'https://your-provided-image-url-for-solar-smash.jpg',
+                'bridge-race': 'https://your-provided-image-url-for-bridge-race.jpg',
+                'mx-offroad': 'https://your-provided-image-url-for-mx-offroad.jpg',
+                'paper-fold': 'https://your-provided-image-url-for-paper-fold.jpg',
+                'flappy-bird': 'https://your-provided-image-url-for-flappy-bird.jpg'
+            };
+            
+            // 检查是否提供了替代图片
+            for (const [gameId, imageUrl] of Object.entries(gameImagesMap)) {
+                if (imageUrl && imageUrl.startsWith('https://your-provided') === false) {
+                    // 如果提供了有效的替代URL，则替换图片
+                    const img = document.querySelector(`#${gameId}-placeholder + img`);
+                    if (img) {
+                        img.src = imageUrl;
+                        img.style.display = 'none';
+                        img.onload = function() {
+                            this.style.display = 'block';
+                            document.getElementById(`${gameId}-placeholder`).style.display = 'none';
+                        };
+                    }
+                }
+            }
+        }
+        
+        // 打开游戏模态框
+        function openGame(gameName, gameUrl) {
+            const modal = document.getElementById('game-modal');
+            const overlay = document.getElementById('overlay');
+            const gameFrame = document.getElementById('game-frame');
+            
+            // 设置游戏URL
+            gameFrame.src = gameUrl;
+            gameFrame.title = gameName;
+            
+            // 显示模态框和遮罩
+            modal.classList.add('active');
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // 关闭游戏模态框
+        document.getElementById('close-game').addEventListener('click', function() {
+            const modal = document.getElementById('game-modal');
+            const overlay = document.getElementById('overlay');
+            const gameFrame = document.getElementById('game-frame');
+            
+            // 隐藏模态框和遮罩
+            modal.classList.remove('active');
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+            
+            // 清空iframe源，减少资源占用
+            setTimeout(() => {
+                gameFrame.src = '';
+            }, 300);
+        });
+        
+        // ESC键关闭游戏
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('game-modal');
+                if (modal.classList.contains('active')) {
+                    document.getElementById('close-game').click();
+                }
+            }
+        });
+        
+        // 点击遮罩关闭游戏
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('close-game').click();
+        });
+        
+        // 全屏切换
+        let isFullscreen = false;
+        document.getElementById('fullscreen-toggle').addEventListener('click', function() {
+            const gameContainer = document.querySelector('.game-container');
+            
+            if (!isFullscreen) {
+                // 进入全屏
+                if (gameContainer.requestFullscreen) {
+                    gameContainer.requestFullscreen();
+                } else if (gameContainer.webkitRequestFullscreen) {
+                    gameContainer.webkitRequestFullscreen();
+                } else if (gameContainer.msRequestFullscreen) {
+                    gameContainer.msRequestFullscreen();
+                }
+                
+                this.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                `;
+            } else {
+                // 退出全屏
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+                
+                this.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"/>
+                    </svg>
+                `;
+            }
+            
+            isFullscreen = !isFullscreen;
+        });
+        
+        // 监听全屏变化
+        document.addEventListener('fullscreenchange', updateFullscreenButton);
+        document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+        document.addEventListener('mozfullscreenchange', updateFullscreenButton);
+        document.addEventListener('MSFullscreenChange', updateFullscreenButton);
+        
+        function updateFullscreenButton() {
+            const fullscreenBtn = document.getElementById('fullscreen-toggle');
+            
+            if (document.fullscreenElement || 
+                document.webkitFullscreenElement || 
+                document.mozFullScreenElement ||
+                document.msFullscreenElement) {
+                // 全屏模式
+                isFullscreen = true;
+                fullscreenBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                `;
+            } else {
+                // 非全屏模式
+                isFullscreen = false;
+                fullscreenBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"/>
+                    </svg>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
